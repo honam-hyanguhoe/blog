@@ -1,14 +1,14 @@
 # Site settings
-title: Monochrome | A minimal, responsive Jekyll blog theme
-description: "A minimal, responsive, ready to use blog template, built with Jekyll."
-url: "http://www.dyutibarma.github.io/monochrome"
+title: 에그로그 | 간호사의 근무 관리를 손쉽게
+description: "에그로그 개발 기록"
+url: "https://blog.egg-log.org"
 author:
-  name: "The Review Index"
-  email: "dyutibarma@gmail.com"
-  url: "https://thereviewindex.com"
+  name: "egg-log"
+  email: "eggrock2023@gmail.com"
+  url: "https://blog.egg-log.org"
 
 # Build settings
-baseurl: /monochrome # Change this to your relative path (ex: /blog/), or leave just a /
+baseurl: / # Change this to your relative path (ex: /blog/), or leave just a /
 markdown: kramdown
 source: .
 destination: ./_site
@@ -40,4 +40,4 @@ custom_nav_footer: false
 reverse: false
 
 # comment
-disqus: jekyll-tale
+disqus: egglog
