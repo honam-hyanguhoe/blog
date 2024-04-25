@@ -36,3 +36,14 @@ def hello
 end
 
 {% endhighlight %}
+
+Python example:
+{% highlight java linenos %}
+
+public class Solution{
+  public static void main(String[] args){
+  
+  }
+}
+
+{% endhighlight %}
