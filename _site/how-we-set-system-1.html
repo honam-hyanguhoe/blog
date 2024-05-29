@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<!-- Meta -->
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+	<meta name="generator" content="Jekyll">
+
+	<title>에그로그 인프라 구축기 (1)</title>
+  <meta name="description" content="우리는 어떻게 에그로그를 구현했을까? - 시스템 구조 변경기">
+
+	<!-- CSS & fonts -->
+	<link rel="stylesheet" href="/css/main.css">
+
+	<!-- RSS -->
+	<link href="/atom.xml" type="application/atom+xml" rel="alternate" title="ATOM Feed" />
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" type="image/png" href="img/favicon.png">
+
+</head>
+
+
+<body>
+	<div id="wrap">
+	  	
+	  	<!-- Navigation -->
+	  	<nav id="nav">
+	<div id="nav-list">
+		<a href="/">Home</a>
+
+		<!-- Nav pages -->
+	  
+	    
+	  
+	    
+	      <a href="/about" title="About">About</a>
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+    
+    <!-- Nav links -->
+	  <!--<a href="https://github.com/thereviewindex/monochrome/archive/master.zip">Download</a>-->
+<a href="https://github.com/honam-hyanguhoe" ><img src="../img/github.svg" style="height: 1.1em; margin-bottom: -0.15em;display: inline-block" alt="logo"/> GitHub</a>
+
+
+	</div>
+  
+  <!-- Nav footer -->
+	
+	  <footer>
+	
+	<span>version 1.0.0</span>
+
+</footer>
+	
+
+</nav>
+
+    
+    <!-- Icon menu -->
+	  <a id="nav-menu">
+	  	<div id="menu"></div>
+	  </a>
+
+      <!-- Header -->
+      
+        <header id="header" class="parent justify-spaceBetween">
+  <div class="inner w100 relative">
+    <span class="f-left">  
+      <a href="/">
+          <img src="../img/title.svg" style="height: 2.5em;margin-bottom: -0.4em" alt="에그로그 로고"/>
+<!--        <h1>-->
+<!--          <span style="color: #FEC84B">에그</span>로그-->
+<!--        </h1>-->
+      </a>
+    </span>
+    <span id="nav-links" class="absolute right bottom">
+      <!-- Nav pages -->
+	    
+	      
+	    
+	      
+	        <a href="/about" title="About">About</a>
+	      
+	    
+	      
+	    
+	      
+	    
+	      
+	    
+	      
+	    
+	      
+	    
+      
+      <!-- Nav links -->
+	    <!--<a href="https://github.com/thereviewindex/monochrome/archive/master.zip">Download</a>-->
+<a href="https://github.com/honam-hyanguhoe" ><img src="../img/github.svg" style="height: 1.1em; margin-bottom: -0.15em;display: inline-block" alt="logo"/> GitHub</a>
+
+
+    </span>
+  </div>
+</header>
+
+
+
+
+      
+
+    <!-- Main content -->
+	  <div id="container">
+		  
+		<main>
+
+			<article id="post-page">
+	<h2>에그로그 인프라 구축기 (1)</h2>		
+	<time datetime="2024-05-22T00:00:00+09:00" class="by-line">22 May 2024  <span>| 바크콜</span></time>
+
+	<div class="content">
+
+		<p>안녕하세요 호남향우회에서 인프라 구현을 맡은 바크콜입니다. 첫번째 게시글이니만큼 에그로그의 서버가 어떻게 변화했는지 정리해보려합니다. <br />
+프로젝트의 프로토 타입을 개발하던 시점 인프라를 처음 담당하게되었었습니다. 때문에 당시 목표는 “CI/CD를 구축하자!” 정도였습니다. 그렇게 설계된 시스템의 구성과 특징을 요약하면 다음과 같습니다.</p>
+
+<p><img src="../img/img-test.png" alt="Test" title="Test" /></p>
+
+<ol>
+  <li>submodule을 활용한 환경변수 관리</li>
+  <li>main 브랜치 push를 트리거로 빌드</li>
+  <li>Docker 컨테이너화</li>
+  <li>AWS Route 53, 로드밸런서를 이용한 도메인 및 SSL 관리</li>
+  <li>nginx 리버스 프록시 적용</li>
+</ol>
+
+<p>이후 두 개의 프로젝트를 거치고 다시 프로젝트를 검토하니 많은 문제를 찾을 수 있었습니다. <br /> 
+실개발에서 저희 팀의 목표는 <code class="language-plaintext highlighter-rouge">배포</code>와 <code class="language-plaintext highlighter-rouge">운영</code> 이었습니다. 이를 달성하기위해서는 테스트와 가용성, 리소스 최적화와 모니터링에 대해 고민해야했습니다.</p>
+
+<p><img src="../img/img-test.png" alt="Test" title="Test" /></p>
+
+<p>라벨별로 빌드를 관리하고, 메인 서버를 이중화하여 시스템이 접속 불가가 되는 상황을 막고 무중단 배포를 적용해 downtime 최소화, Elasticsearch를 적용해 full-text 검색 및 ELK 스펙의 로깅, Prometheus와 Grafana 조합의 서버 모니터링 및 알림 서버와 메인 시스템의 분리를 통해 목표를 달성하고자했습니다.
+또한 도커 이미지를 private하게 관리하기 위해 Nexus를 통해 도커 사설 레포지토리 및 내부 라이브러리를 구축했는데요, 한 가지 중대한 사항을 놓치고 있다는 걸 깨달았습니다.</p>
+
+<p>바로 <code class="language-plaintext highlighter-rouge">운영</code>이었습니다. 운영에 있어 중요한건 무엇일까요? 어찌되었든간에 저희 팀의 예산 안에서 최대한의 기능을 제공할 수 있어야한다는 점입니다.
+인건비가 제로인 프로젝트에서 지출이 발생하는 곳은 서버입니다. 서버 비용을 절약하기 위해서는 현재 상태를 검토할 필요가 있었습니다.</p>
+
+<p>모든 컨테이너가 비활성 상태일때 서버 상에서 메모리를 점유하고 있는 용량을 확인해보았습니다.</p>
+<ul>
+  <li>Elasticsearch : 5.7GB</li>
+  <li>Jenkins : 4.5GB</li>
+  <li>Spring boot : 0.6 GB</li>
+  <li>React : 0.4GB</li>
+  <li>Redis : 3MB</li>
+</ul>
+
+<p>제공받은 서버를 사용하고 있는 현재 시점에서는 문제가 되지않았지만 추후 서버를 이전했을때 유지가 불가능한 수준이었습니다. 이를 개선하기 위해 다시 서비스의 예상 사용자를 기준으로 필요한 요구사항을 계산해보았습니다.</p>
+<ul>
+  <li>배포 자동화
+    <ul>
+      <li>현재는 Jenkins를 사용하고 있지만 이미 Docker image 기반의 빌드 방식을 채택하고 있어 추후 서버 이전 시 Github Action으로 대체해 Jenkins의 메모리 사용분을 절약합니다.</li>
+    </ul>
+  </li>
+  <li>로그 모니터링
+    <ul>
+      <li>고도의 쿼리를 하지 않고 프론트-백 에러 확인용으로 사용 예정이었습니다.</li>
+      <li>ELK -&gt; PLG 스택 변경</li>
+    </ul>
+  </li>
+  <li>사용자 1000명 (가정)
+    <ul>
+      <li>게시판 전문 검색(MySQL vs Elasticsearch)
+        <ul>
+          <li>프리티어 환경이라고 가정했습니다. 1GB 메모리 중 75% 이하의 버퍼 풀을 사용한다면 768MB 이하의 버퍼풀을 사용할 수 있게됩니다. 여기서 인덱스의 크기가 10~20%를 차지할때 대략 500MB ~ 1GB를 인덱스 공간으로 사용할 수 있게되는데 때문에 저장가능한 데이터 크기가 5GB 정도라는 것을 유추할 수 있습니다.
+            <ul>
+              <li>전문 검색이 필요한 게시판의 한 row의 데이터 사이즈를 계산하면 대략 130KB 정도인데 이를 통해 대략 4만 row를 저장할 수 있다고 할 수 있습니다.</li>
+              <li>MySQL full-text search의 경우</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>캐싱</li>
+    </ul>
+  </li>
+</ul>
+
+		
+	</div>
+	
+		<!-- Start disqus -->
+<script src="/js/disqusLoader.js" /></script>
+<div id="disqus_thread"><h3>Discussion and feedback</h3></div>
+<div class="disqus"></div>
+<script>
+    disqusLoader('.disqus', {
+        scriptUrl: 'https://egglog.disqus.com/embed.js'
+    });
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<!-- End disqus -->
+	
+</article>
+
+
+
+	  </main>
+		
+		  <!-- Pagination links -->
+      
+
+	  </div>
+	    
+	    <!-- Footer -->
+	    <footer><span>@2024 - 에그로그</span></footer>
+
+
+	    <!-- Script -->
+      <script src="/js/main.js"></script>	
+
+
+	</div>
+</body>
+</html>
