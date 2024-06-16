@@ -79,7 +79,7 @@
   <div class="inner w100 relative">
     <span class="f-left">  
       <a href="/">
-          <img src="../img/title.svg" style="height: 4em;margin-bottom: -0.4em" alt="에그로그 로고"/>
+          <img src="../img/title.svg" style="height: 2.5em;margin-bottom: -0.4em" alt="에그로그 로고"/>
 <!--        <h1>-->
 <!--          <span style="color: #FEC84B">에그</span>로그-->
 <!--        </h1>-->
@@ -140,15 +140,24 @@
   <li>Default Monochrome Color Palette - black, white, greys</li>
 </ul>
 
-<h3 id="setup">Setup</h3>
-
-<p>Monochrome may be installed by simply downloading the .zip folder from the <a href="https://github.com/thereviewindex/monochrome/archive/master.zip">repository on Github</a>.</p>
-
-<p>After extracting the content from the folder into the selected directory, you can type <code class="language-plaintext highlighter-rouge">jekyll serve</code> from the terminal, than open your browser to <code class="language-plaintext highlighter-rouge">0.0.0.0:4000/monochrome/</code> and you will find it there.</p>
-
-<p>Additionally it is possible to fork the repository and use Github Pages as hosting. By following this way it will be enough to change the <code class="language-plaintext highlighter-rouge">baseurl</code> value into the <code class="language-plaintext highlighter-rouge">_config.yml</code> file, with the directory name of your project (for example /blog) or simply with a “/” (slash) if you want install Monochrome in the root.</p>
-
-<p>For further details on Monochrome, please visit the <a href="https://github.com/thereviewindex/monochrome/">repository on Github</a>.</p>
+<div style="display: grid; grid-template-columns: 1fr 2fr;">
+<div id="content-options" style="background-color: #009999">
+<ul>
+    <li value="1" onclick="changeContent(event)">1</li>
+    <li value="2" onclick="changeContent(event)">2</li>
+    <li value="3" onclick="changeContent(event)">3</li>
+</ul>
+</div>
+<div id="content-body" style="background-color: #445588">
+</div>
+</div>
+<script>
+const changeContent = (e) => {
+    let element = document.getElementById("content-body");
+    element.innerHTML = `<span>${e.target.getAttribute("value")}</span>`;
+    console.log(e.target.getAttribute("value"));
+}
+</script>
 
 
 

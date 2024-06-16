@@ -15,18 +15,24 @@ description: This page describes monochrome.
 - Easy customization for header, footer, navigation links, colors, favicon etc
 - Default Monochrome Color Palette - black, white, greys
 
-### Setup
-
-Monochrome may be installed by simply downloading the .zip folder from the [repository on Github](https://github.com/thereviewindex/monochrome/archive/master.zip).
-
-After extracting the content from the folder into the selected directory, you can type ``jekyll serve`` from the terminal, than open your browser to ``0.0.0.0:4000/monochrome/`` and you will find it there.
-
-Additionally it is possible to fork the repository and use Github Pages as hosting. By following this way it will be enough to change the ``baseurl`` value into the ``_config.yml`` file, with the directory name of your project (for example /blog) or simply with a "/" (slash) if you want install Monochrome in the root. 
-
-
-
-For further details on Monochrome, please visit the [repository on Github](https://github.com/thereviewindex/monochrome/).
-
+<div style="display: grid; grid-template-columns: 1fr 2fr;">
+<div id="content-options" style="background-color: #009999">
+<ul>
+    <li value="1" onclick="changeContent(event)">1</li>
+    <li value="2" onclick="changeContent(event)">2</li>
+    <li value="3" onclick="changeContent(event)">3</li>
+</ul>
+</div>
+<div id="content-body" style="background-color: #445588">
+</div>
+</div>
+<script>
+const changeContent = (e) => {
+    let element = document.getElementById("content-body");
+    element.innerHTML = `<span>${e.target.getAttribute("value")}</span>`;
+    console.log(e.target.getAttribute("value"));
+}
+</script>
 
 
 
