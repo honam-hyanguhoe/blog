@@ -1,14 +1,14 @@
 ---
-title: React Native에서 Kotlin으로
+title: React Native에서 Kotlin으로 기술을 변경한 이유
 description: React Native에서 Kotlin으로 기술을 변경한 이유
-header: React Native에서 Kotlin으로
+header: React Native에서 Kotlin으로 기술을 변경한 이유
 comments: true
 writer: 버블티
 ---
 
 ## 1. 들어가기 앞서
 
-안녕하세요! 팀 에그로그에서 Native 및 FrontEnd 개발을 맡고 있는 버블티입니다. 들어가기 앞서 간단하게 ‘에그로그’ 모바일 앱 서비스를 만들며 알아보았던 내용들에 대해 설명하고자 합니다.
+안녕하세요! 팀 호남향우회에서 Native 및 FrontEnd 개발을 맡고 있는 버블티입니다. 들어가기 앞서 간단하게 ‘에그로그’ 모바일 앱 서비스를 만들며 알아보았던 내용들에 대해 설명하고자 합니다.
 
 최근, 모바일 앱이 신흥 플랫폼으로 자리잡음에 따라 다양한 기업들과 개발자들은 모바일 앱에 관심을 가지고 있습니다. 때문에, 크로스 플랫폼인 React Native와 Flutter, 네이티브 앱인 Kotlin, Swift 기술에 많은 관심이 쏠리고 있습니다.
 

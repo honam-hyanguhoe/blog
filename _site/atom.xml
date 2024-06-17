@@ -4,7 +4,7 @@
  <title>에그로그 | 간호사의 근무 관리를 손쉽게</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <id>http://localhost:4000</id>
- <updated>2024-06-17T11:02:00+09:00</updated>
+ <updated>2024-06-17T11:14:06+09:00</updated>
  <author>
    <name>egg-log</name>
    <uri>https://blog.egg-log.org</uri>
@@ -14,11 +14,11 @@
  
 
  <entry>
-   <title>React Native에서 Kotlin으로</title>
+   <title>React Native에서 Kotlin으로 기술을 변경한 이유</title>
    <link href="http://localhost:4000/why-we-change-native-skill"/>
    <id>http://localhost:4000/why-we-change-native-skill</id>
    <updated>2024-06-17T00:00:00+09:00</updated>
-   <content type="html">&lt;h2 id=&quot;1-들어가기-앞서&quot;&gt;1. 들어가기 앞서&lt;/h2&gt; &lt;p&gt;안녕하세요! 팀 에그로그에서 Native 및 FrontEnd 개발을 맡고 있는 버블티입니다. 들어가기 앞서 간단하게 ‘에그로그’ 모바일 앱 서비스를 만들며 알아보았던 내용들에 대해 설명하고자 합니다.&lt;/p&gt; &lt;p&gt;최근, 모바일 앱이 신흥 플랫폼으로 자리잡음에 따라 다양한 기업들과 개발자들은 모바일 앱에 관심을 가지고 있습니다. 때문에, 크로스 플랫폼인 React Native와 Flutter, 네이티브 앱인...</content>
+   <content type="html">&lt;h2 id=&quot;1-들어가기-앞서&quot;&gt;1. 들어가기 앞서&lt;/h2&gt; &lt;p&gt;안녕하세요! 팀 호남향우회에서 Native 및 FrontEnd 개발을 맡고 있는 버블티입니다. 들어가기 앞서 간단하게 ‘에그로그’ 모바일 앱 서비스를 만들며 알아보았던 내용들에 대해 설명하고자 합니다.&lt;/p&gt; &lt;p&gt;최근, 모바일 앱이 신흥 플랫폼으로 자리잡음에 따라 다양한 기업들과 개발자들은 모바일 앱에 관심을 가지고 있습니다. 때문에, 크로스 플랫폼인 React Native와 Flutter, 네이티브 앱인...</content>
  </entry>
 
  
