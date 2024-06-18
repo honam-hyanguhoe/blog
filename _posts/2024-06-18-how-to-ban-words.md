@@ -4,7 +4,7 @@ description: 게시판 금칙어 필터링 하기
 header: 게시판 금칙어 필터링 하기
 comments: true
 writer: 아샷추
---
+---
 
 # 게시판 금칙어 필터링
 
