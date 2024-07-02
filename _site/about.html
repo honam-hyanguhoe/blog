@@ -3,12 +3,12 @@
 
 <head>
 	<!-- Meta -->
-	<meta charset="UTF-8"/>
+	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 	<meta name="generator" content="Jekyll">
 
 	<title>About</title>
-  <meta name="description" content="This page describes monochrome.">
+	<meta name="description" content="This page describes monochrome.">
 
 	<!-- CSS & fonts -->
 	<link rel="stylesheet" href="/css/main.css">
@@ -16,168 +16,170 @@
 	<!-- RSS -->
 	<link href="/atom.xml" type="application/atom+xml" rel="alternate" title="ATOM Feed" />
 
-  <!-- Favicon -->
-  <link rel="shortcut icon" type="image/png" href="img/favicon.png">
+	<!-- Favicon -->
+	<link rel="shortcut icon" type="image/png" href="img/favicon.png">
 
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+		}
+
+		#content-options {
+			list-style: none;
+			padding: 0;
+			margin: 0;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			height: auto;
+		}
+
+		#content-options li {
+			margin: 0;
+			padding: 0;
+		}
+
+		#content-options img {
+			width: 100%;
+			height: auto;
+			cursor: pointer;
+			display: block;
+		}
+
+		#content-body {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			width: 100%;
+			height: auto;
+		}
+
+		#content-image {
+			width: 100%;
+			height: auto;
+			object-fit: cover;
+		}
+
+		.container {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			gap: 20px;
+		}
+
+		@media (min-width: 768px) {
+			.container {
+				flex-direction: row;
+				align-items: flex-start;
+			}
+
+			#content-options {
+				height: 785px;
+				width: 608px;
+			}
+
+			#content-body {
+				width: 634px;
+				height: 785px;
+			}
+		}
+	</style>
 </head>
 
-
 <body>
-	<div id="wrap">
-	  	
-	  	<!-- Navigation -->
-	  	<nav id="nav">
-	<div id="nav-list">
-		<a href="/">Home</a>
+<div id="wrap">
+	<!-- Navigation -->
+	<nav id="nav">
+		<div id="nav-list">
+			<a href="/">Home</a>
+			<a href="/about" title="About">About</a>
+			<a href="https://github.com/honam-hyanguhoe"><img src="../img/github.svg"
+															  style="height: 1.1em; margin-bottom: -0.15em;display: inline-block" alt="logo" /> GitHub</a>
+		</div>
+		<footer>
+			<span>version 1.0.0</span>
+		</footer>
+	</nav>
 
-		<!-- Nav pages -->
-	  
-	    
-	  
-	    
-	      <a href="/about" title="About">About</a>
-	    
-	  
-	    
-	  
-	    
-	  
-	    
-	  
-	    
-	  
-	    
-	  
-    
-    <!-- Nav links -->
-	  <!--<a href="https://github.com/thereviewindex/monochrome/archive/master.zip">Download</a>-->
-<a href="https://github.com/honam-hyanguhoe" ><img src="../img/github.svg" style="height: 1.1em; margin-bottom: -0.15em;display: inline-block" alt="logo"/> GitHub</a>
+	<!-- Icon menu -->
+	<a id="nav-menu">
+		<div id="menu"></div>
+	</a>
 
+	<!-- Header -->
+	<header id="header" class="parent justify-spaceBetween">
+		<div class="inner w100 relative">
+                <span class="f-left">
+                    <a href="/">
+                        <img src="../img/title.svg" style="height: 2.5em;margin-bottom: -0.4em" alt="에그로그 로고" />
+                    </a>
+                </span>
+			<span id="nav-links" class="absolute right bottom">
+                    <a href="/about" title="About">About</a>
+                    <a href="https://github.com/honam-hyanguhoe"><img src="../img/github.svg"
+																	  style="height: 1.1em; margin-bottom: -0.15em;display: inline-block" alt="logo" /> GitHub</a>
+                </span>
+		</div>
+	</header>
 
-	</div>
-  
-  <!-- Nav footer -->
-	
-	  <footer>
-	
-	<span>version 1.0.0</span>
+	<!-- Main content -->
+	<div id="container">
 
-</footer>
-	
-
-</nav>
-
-    
-    <!-- Icon menu -->
-	  <a id="nav-menu">
-	  	<div id="menu"></div>
-	  </a>
-
-      <!-- Header -->
-      
-        <header id="header" class="parent justify-spaceBetween">
-  <div class="inner w100 relative">
-    <span class="f-left">  
-      <a href="/">
-          <img src="../img/title.svg" style="height: 2.5em;margin-bottom: -0.4em" alt="에그로그 로고"/>
-<!--        <h1>-->
-<!--          <span style="color: #FEC84B">에그</span>로그-->
-<!--        </h1>-->
-      </a>
-    </span>
-    <span id="nav-links" class="absolute right bottom">
-      <!-- Nav pages -->
-	    
-	      
-	    
-	      
-	        <a href="/about" title="About">About</a>
-	      
-	    
-	      
-	    
-	      
-	    
-	      
-	    
-	      
-	    
-	      
-	    
-      
-      <!-- Nav links -->
-	    <!--<a href="https://github.com/thereviewindex/monochrome/archive/master.zip">Download</a>-->
-<a href="https://github.com/honam-hyanguhoe" ><img src="../img/github.svg" style="height: 1.1em; margin-bottom: -0.15em;display: inline-block" alt="logo"/> GitHub</a>
-
-
-    </span>
-  </div>
-</header>
-
-
-
-
-      
-
-    <!-- Main content -->
-	  <div id="container">
-		  
 		<main>
 
 			<article id="page">
-	
-  <h2 id="about">About</h2>
-<p>에그로그 팀 소개</p>
 
-<h2 id="features">Features</h2>
+				<h2 id="about">About</h2>
+				<p>에그로그 팀 소개</p>
 
-<ul>
-  <li>Completely responsive and mobile first</li>
-  <li>Clean SEO friendly URLs, auto-generated from post title (no messy dates in the url)</li>
-  <li>SEO title/description integration</li>
-  <li>Sitemap ready</li>
-  <li>Easy customization for header, footer, navigation links, colors, favicon etc</li>
-  <li>Default Monochrome Color Palette - black, white, greys</li>
-</ul>
-
-<div style="display: grid; grid-template-columns: 1fr 2fr;">
-<div id="content-options" style="background-color: #009999">
-<ul>
-    <li value="1" onclick="changeContent(event)">1</li>
-    <li value="2" onclick="changeContent(event)">2</li>
-    <li value="3" onclick="changeContent(event)">3</li>
-</ul>
-</div>
-<div id="content-body" style="background-color: #445588">
-</div>
-</div>
-<script>
-const changeContent = (e) => {
-    let element = document.getElementById("content-body");
-    element.innerHTML = `<span>${e.target.getAttribute("value")}</span>`;
-    console.log(e.target.getAttribute("value"));
-}
-</script>
-
-
-
-</article>
-
-	  </main>
-		
-		  <!-- Pagination links -->
-      
-
-	  </div>
-	    
-	    <!-- Footer -->
-	    <footer><span>@2024 - 에그로그</span></footer>
+				<div class="container">
+					<ul id="content-options">
+						<li onclick="changeContent(event)">
+							<img src="./img/about/option_start.png" data-img="./img/about/start.png">
+						</li>
+						<li onclick="changeContent(event)">
+							<img src="./img/about/option_prototype.png" data-img="./img/about/prototype.png">
+						</li>
+						<li onclick="changeContent(event)">
+							<img src="./img/about/option_egglog_v1.png" data-img="./img/about/egglog_v1.png">
+						</li>
+						<li onclick="changeContent(event)">
+							<img src="./img/about/option_egglog_v2.png" data-img="./img/about/sorry.png">
+						</li>
+						<li onclick="changeContent(event)">
+							<img src="./img/about/option_next.png" data-img="./img/about/sorry.png">
+						</li>
+					</ul>
+					<div id="content-body">
+						<img id="content-image" src="" alt="content image">
+					</div>
+				</div>
+				<script>
+					const changeContent = (e) => {
+						let element = document.getElementById("content-image");
+						let imgSrc = e.target.getAttribute("data-img");
+						element.src = imgSrc;
+					}
+				</script>
 
 
-	    <!-- Script -->
-      <script src="/js/main.js"></script>	
 
+			</article>
+
+		</main>
+
+		<!-- Pagination links -->
 
 	</div>
+
+	<!-- Footer -->
+	<footer><span>@2024 - 에그로그</span></footer>
+
+	<!-- Script -->
+	<script src="/js/main.js"></script>
+
+</div>
 </body>
+
 </html>
