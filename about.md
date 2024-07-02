@@ -12,19 +12,19 @@ description: This page describes monochrome.
 <div class="container">
     <ul id="content-options">
         <li onclick="changeContent(event)">
-            <img src="./img/about/option_start.png" data-img="./img/about/start.png">
+            <img src="https://github.com/honam-hyanguhoe/blog/blob/main/_site/img/about/option_start.png?raw=true" data-img="https://github.com/honam-hyanguhoe/blog/blob/main/_site/img/about/start.png?raw=true">
         </li>
         <li onclick="changeContent(event)">
-            <img src="./img/about/option_prototype.png" data-img="./img/about/prototype.png">
+            <img src="https://github.com/honam-hyanguhoe/blog/blob/main/_site/img/about/option_prototype.png?raw=true" data-img="https://github.com/honam-hyanguhoe/blog/blob/main/_site/img/about/prototype.png?raw=true">
         </li>
         <li onclick="changeContent(event)">
-            <img src="./img/about/option_egglog_v1.png" data-img="./img/about/egglog_v1.png">
+            <img src="https://github.com/honam-hyanguhoe/blog/blob/main/_site/img/about/option_egglog_v1.png?raw=true" data-img="https://github.com/honam-hyanguhoe/blog/blob/main/_site/img/about/egglog_v1.png?raw=true">
         </li>
         <li onclick="changeContent(event)">
-            <img src="./img/about/option_egglog_v2.png" data-img="./img/about/sorry.png">
+            <img src="https://github.com/honam-hyanguhoe/blog/blob/main/_site/img/about/option_egglog_v2.png?raw=true" data-img="https://github.com/honam-hyanguhoe/blog/blob/main/_site/img/about/sorry.png?raw=true">
         </li>
         <li onclick="changeContent(event)">
-            <img src="./img/about/option_next.png" data-img="./img/about/sorry.png">
+            <img src="https://github.com/honam-hyanguhoe/blog/blob/main/_site/img/about/option_next.png?raw=true" data-img="https://github.com/honam-hyanguhoe/blog/blob/main/_site/img/about/sorry.png?raw=true">
         </li>
     </ul>
     <div id="content-body">
