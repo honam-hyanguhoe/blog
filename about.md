@@ -28,7 +28,7 @@ description: This page describes monochrome.
         </li>
     </ul>
     <div id="content-body">
-        <img id="content-image" src="" alt="content image">
+        <img id="content-image" src="https://github.com/honam-hyanguhoe/blog/blob/main/_site/img/about/option_next.png?raw=true" alt="content image">
     </div>
 </div>
 
