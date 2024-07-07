@@ -4,7 +4,7 @@
  <title>에그로그 | 간호사의 근무 관리를 손쉽게</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <id>http://localhost:4000</id>
- <updated>2024-07-04T17:19:35+09:00</updated>
+ <updated>2024-07-07T23:34:25+09:00</updated>
  <author>
    <name>egg-log</name>
    <uri>https://blog.egg-log.org</uri>
@@ -17,11 +17,8 @@
    <title>안드로이드 주니어 개발자의 클린 아키텍처 도입기 (1)</title>
    <link href="http://localhost:4000/what-is-clean-architecture"/>
    <id>http://localhost:4000/what-is-clean-architecture</id>
-   <updated>2024-07-04T00:00:00+09:00</updated>
-   <content type="html">&lt;p&gt;안녕하세요! 팀 호남향우회의 프론트엔드 개발을 맡고 있는 포케입니다.&lt;/p&gt;
-
-&lt;p&gt;타 프로젝트를 진행할 때&lt;/p&gt;
-</content>
+   <updated>2024-07-07T00:00:00+09:00</updated>
+   <content type="html">&lt;p&gt;안녕하세요! 팀 호남향우회의 프론트엔드 개발을 맡고 있는 포케입니다.&lt;/p&gt; &lt;p&gt;처음 구조를 정하지 않고 프로젝트를 시작하게 되면 어느새 늘어나 있는 코드들과 건들기 어려운 상황을 볼 수 있습니다. 저희 팀은 초기부터 운영을 목표로 프로젝트를 진행했기 때문에 유지보수성과 확장성을 위하여 구조를 확실하게 정하고 가야 한다고 생각하였습니다.&lt;/p&gt; &lt;p&gt;저희 프론트엔드팀은 클린 아키텍처 + MVI 패턴을 결합한...</content>
  </entry>
 
  
