@@ -4,12 +4,55 @@
  <title>에그로그 | 간호사의 근무 관리를 손쉽게</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <id>http://localhost:4000</id>
- <updated>2024-06-17T11:14:06+09:00</updated>
+ <updated>2024-07-04T17:19:35+09:00</updated>
  <author>
    <name>egg-log</name>
    <uri>https://blog.egg-log.org</uri>
    <email>eggrock2023@gmail.com</email>
  </author>
+
+ 
+
+ <entry>
+   <title>안드로이드 주니어 개발자의 클린 아키텍처 도입기 (1)</title>
+   <link href="http://localhost:4000/what-is-clean-architecture"/>
+   <id>http://localhost:4000/what-is-clean-architecture</id>
+   <updated>2024-07-04T00:00:00+09:00</updated>
+   <content type="html">&lt;p&gt;안녕하세요! 팀 호남향우회의 프론트엔드 개발을 맡고 있는 포케입니다.&lt;/p&gt;
+
+&lt;p&gt;타 프로젝트를 진행할 때&lt;/p&gt;
+</content>
+ </entry>
+
+ 
+
+ <entry>
+   <title>에그로그 서비스에 배치 서버가 필요한 이유</title>
+   <link href="http://localhost:4000/why-we-use-batch"/>
+   <id>http://localhost:4000/why-we-use-batch</id>
+   <updated>2024-07-01T00:00:00+09:00</updated>
+   <content type="html">&lt;p&gt;안녕하세요. 에그로그 프로젝트의 백엔드 팀에서 ICS 캘린더 시스템 개발을 맡고 있는 피칸파이 입니다.&lt;/p&gt; &lt;p&gt;현재 에그로그 서비스의 캘린더 시스템에서는 외부 캘린더 데이터 내보내기 및 가져오기 위해 스프링 스케줄러를 활용해서 캘린더 데이터를 동기화를 하고 있습니다.&lt;/p&gt; &lt;p&gt;이 기능으로 사용자는 ICS 형식을 지원하는 타사 캘린더 앱과의 연동성 높아져 유저 편의성이 향상되었습니다.&lt;/p&gt; &lt;p&gt;하지만, 현재 메인...</content>
+ </entry>
+
+ 
+
+ <entry>
+   <title>Jetpack Compose를 선택한 이유</title>
+   <link href="http://localhost:4000/why-we-use-jetpack-compose"/>
+   <id>http://localhost:4000/why-we-use-jetpack-compose</id>
+   <updated>2024-06-30T00:00:00+09:00</updated>
+   <content type="html">&lt;p&gt;안녕하세요. 호남향우회에서 프론트엔드 개발을 맡고 있는 모밀입니다.&lt;/p&gt; &lt;p&gt;저희 프론트엔드 팀에서는 UI를 구현하기 위해 전통적으로 사용되는 XML 레이아웃 파일 대신 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Jetpack Compose&lt;/code&gt;를 선택하였는데요! 오늘은 그 이유에 대해 설명하고자 합니다.&lt;/p&gt; &lt;h1 id=&quot;jetpack-compose&quot;&gt;Jetpack Compose?&lt;/h1&gt; &lt;p&gt;들어가기 앞서, Jetpack Compose에 대해 설명드리겠습니다.&lt;/p&gt; &lt;p&gt;Jetpack Compose는 Google에서 개발한 최신 UI 툴킷으로, Android 앱의 UI를 더...</content>
+ </entry>
+
+ 
+
+ <entry>
+   <title>게시판 금칙어 필터링 하기</title>
+   <link href="http://localhost:4000/how-to-ban-words"/>
+   <id>http://localhost:4000/how-to-ban-words</id>
+   <updated>2024-06-18T00:00:00+09:00</updated>
+   <content type="html">&lt;h1 id=&quot;게시판-금칙어-필터링&quot;&gt;게시판 금칙어 필터링&lt;/h1&gt; &lt;p&gt;안녕하세요 호남향우회에서 백엔드를 맡은 아샷추입니다.&lt;/p&gt; &lt;p&gt;저는 게시판 기능을 담당했습니다. 고도화 방안을 생각하던 중에 게시판은 여러 사용자가 사용하는 공간이다보니 금칙어 관리가 필요하다고 생각했습니다.&lt;/p&gt; &lt;p&gt;어떤 로직으로 구성되어 있는지 살펴볼까요?&lt;/p&gt; &lt;h2 id=&quot;banwords-interface&quot;&gt;BanWords interface&lt;/h2&gt; &lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;BanWords&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span...</content>
+ </entry>
 
  
 
@@ -29,36 +72,6 @@
    <id>http://localhost:4000/how-we-set-system-1</id>
    <updated>2024-06-16T00:00:00+09:00</updated>
    <content type="html">&lt;p&gt;안녕하세요 호남향우회에서 인프라 구현을 맡은 바크콜입니다. 첫번째 게시글이니만큼 에그로그의 서버가 어떻게 변화했는지 정리해보려합니다. &lt;br /&gt; 프로젝트의 프로토 타입을 개발하던 시점 인프라를 처음 담당하게되었었습니다. 때문에 당시 목표는 “CI/CD를 구축하자!” 정도였습니다. 그렇게 설계된 시스템의 구성과 특징을 요약하면 다음과 같습니다.&lt;/p&gt; &lt;ol&gt; &lt;li&gt;submodule을 활용한 환경변수 관리&lt;/li&gt; &lt;li&gt;main 브랜치 push를 트리거로 빌드&lt;/li&gt; &lt;li&gt;Docker 컨테이너화&lt;/li&gt; &lt;li&gt;AWS...</content>
- </entry>
-
- 
-
- <entry>
-   <title>TheReviewIndex | Unbiased User Review Summaries | Monochrome</title>
-   <link href="http://localhost:4000/thereviewindex-introduction"/>
-   <id>http://localhost:4000/thereviewindex-introduction</id>
-   <updated>2017-02-18T00:00:00+09:00</updated>
-   <content type="html">&lt;p&gt;The internet is a source of a humongous amount of unstructured content for all sorts of products, in the form of blogs, videos, user and expert reviews, etc. It is almost impossible for anyone to scour all of this disparate data, with contradictory opinions, and thereafter make a correct, or...</content>
- </entry>
-
- 
-
- <entry>
-   <title>Typography Example | Monochrome</title>
-   <link href="http://localhost:4000/typography-example"/>
-   <id>http://localhost:4000/typography-example</id>
-   <updated>2017-02-14T00:00:00+09:00</updated>
-   <content type="html">&lt;p&gt;&lt;img src=&quot;../img/img-test.png&quot; alt=&quot;Test&quot; title=&quot;Test&quot; /&gt; &lt;img src=&quot;../img/img-test.png&quot; /&gt; Lorem ipsum dolor sit amet, &lt;a href=&quot;http://www.example.com&quot;&gt;consectetur adipisicing&lt;/a&gt; elit. Id, aliquam magni et officiis nemo nihil aliquid placeat alias. Eum voluptates ducimus, nobis ex illum laboriosam quidem corrupti impedit ratione in voluptatum amet beatae facilis temporibus voluptate praesentium voluptatibus! At ab, iusto...</content>
- </entry>
-
- 
-
- <entry>
-   <title>Code Example</title>
-   <link href="http://localhost:4000/code-example"/>
-   <id>http://localhost:4000/code-example</id>
-   <updated>2017-02-12T00:00:00+09:00</updated>
-   <content type="html">&lt;p&gt;To insert highlight code inside of a post, it’s enough to use some specific tags, has directly described into the &lt;a href=&quot;http://jekyllrb.com/docs/templates/#code-snippet-highlighting&quot;&gt;Jekyll documentation&lt;/a&gt;. In this way the code will be included into a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.highlight&lt;/code&gt; CSS class and will be highlight according to the &lt;a href=&quot;https://github.com/mojombo/tpw/blob/master/css/syntax.css&quot;&gt;syntax.scss&lt;/a&gt; file. This is...</content>
  </entry>
 
  

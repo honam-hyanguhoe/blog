@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<!-- Meta -->
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+	<meta name="generator" content="Jekyll">
+
+	<title>게시판 금칙어 필터링 하기</title>
+  <meta name="description" content="게시판 금칙어 필터링 하기">
+
+	<!-- CSS & fonts -->
+	<link rel="stylesheet" href="/css/main.css">
+
+	<!-- RSS -->
+	<link href="/atom.xml" type="application/atom+xml" rel="alternate" title="ATOM Feed" />
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" type="image/png" href="img/favicon.png">
+
+</head>
+
+
+<body>
+	<div id="wrap">
+	  	
+	  	<!-- Navigation -->
+	  	<nav id="nav">
+	<div id="nav-list">
+		<a href="/">Home</a>
+
+		<!-- Nav pages -->
+	  
+	    
+	  
+	    
+	      <a href="/about" title="About">About</a>
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+    
+    <!-- Nav links -->
+	  <!--<a href="https://github.com/thereviewindex/monochrome/archive/master.zip">Download</a>-->
+<a href="https://github.com/honam-hyanguhoe" ><img src="../img/github.svg" style="height: 1.1em; margin-bottom: -0.15em;display: inline-block" alt="logo"/> GitHub</a>
+
+
+	</div>
+  
+  <!-- Nav footer -->
+	
+	  <footer>
+	
+	<span>version 1.0.0</span>
+
+</footer>
+	
+
+</nav>
+
+    
+    <!-- Icon menu -->
+	  <a id="nav-menu">
+	  	<div id="menu"></div>
+	  </a>
+
+      <!-- Header -->
+      
+        <header id="header" class="parent justify-spaceBetween">
+  <div class="inner w100 relative">
+    <span class="f-left">  
+      <a href="/">
+          <img src="../img/title.svg" style="height: 2.5em;margin-bottom: -0.4em" alt="에그로그 로고"/>
+<!--        <h1>-->
+<!--          <span style="color: #FEC84B">에그</span>로그-->
+<!--        </h1>-->
+      </a>
+    </span>
+    <span id="nav-links" class="absolute right bottom">
+      <!-- Nav pages -->
+	    
+	      
+	    
+	      
+	        <a href="/about" title="About">About</a>
+	      
+	    
+	      
+	    
+	      
+	    
+	      
+	    
+	      
+	    
+	      
+	    
+      
+      <!-- Nav links -->
+	    <!--<a href="https://github.com/thereviewindex/monochrome/archive/master.zip">Download</a>-->
+<a href="https://github.com/honam-hyanguhoe" ><img src="../img/github.svg" style="height: 1.1em; margin-bottom: -0.15em;display: inline-block" alt="logo"/> GitHub</a>
+
+
+    </span>
+  </div>
+</header>
+
+
+
+
+      
+
+    <!-- Main content -->
+	  <div id="container">
+		  
+		<main>
+
+			<article id="post-page">
+	<h2>게시판 금칙어 필터링 하기</h2>		
+	<time datetime="2024-06-18T00:00:00+09:00" class="by-line">18 Jun 2024  <span>| 아샷추</span></time>
+
+	<div class="content">
+
+		<h1 id="게시판-금칙어-필터링">게시판 금칙어 필터링</h1>
+
+<p>안녕하세요 호남향우회에서 백엔드를 맡은 아샷추입니다.</p>
+
+<p>저는 게시판 기능을 담당했습니다. 고도화 방안을 생각하던 중에 게시판은 여러 사용자가 사용하는 공간이다보니 금칙어 관리가 필요하다고 생각했습니다.</p>
+
+<p>어떤 로직으로 구성되어 있는지 살펴볼까요?</p>
+
+<h2 id="banwords-interface">BanWords interface</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">BanWords</span> <span class="o">{</span>
+    <span class="nc">String</span><span class="o">[]</span> <span class="n">banWords</span> <span class="o">=</span> <span class="o">{</span>
+	    <span class="s">"나쁜말"</span><span class="o">,</span> <span class="s">"안좋은말"</span>
+    <span class="o">};</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>금칙어를 배열로 담아놓습니다.</p>
+
+<h2 id="banwordfilter-class">BanWordFilter class</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">BanWordFilter</span> <span class="kd">extends</span> <span class="nc">HashSet</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="kd">implements</span> <span class="nc">BanWords</span> <span class="o">{</span>
+
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">substituteValue</span> <span class="o">=</span> <span class="s">"*"</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">BanWordFilter</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">addAll</span><span class="o">(</span><span class="nc">List</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="n">banWords</span><span class="o">));</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="nf">BanWordFilter</span><span class="o">(</span><span class="nc">String</span> <span class="n">substituteValue</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">substituteValue</span> <span class="o">=</span> <span class="n">substituteValue</span><span class="o">;</span>
+    <span class="o">}</span>
+
+</code></pre></div></div>
+
+<p>substituteValue는 금칙어를 대체할 때 사용하는 문자열입니다. 기본값은 <code class="language-plaintext highlighter-rouge">‘*’</code>입니다.</p>
+
+<p>banWords 배열을 리스트로 변환 후 HashSet에 추가합니다.</p>
+
+<h3 id="prechangestring-text">preChange(String text)</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="nc">String</span> <span class="nf">preChange</span><span class="o">(</span><span class="nc">String</span> <span class="n">text</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Pattern</span> <span class="n">pattern</span> <span class="o">=</span> <span class="nc">Pattern</span><span class="o">.</span><span class="na">compile</span><span class="o">(</span><span class="s">"[ㄱ-ㅎㅏ-ㅣ가-힣a-zA-Z\\s]"</span><span class="o">);</span>
+        <span class="nc">Matcher</span> <span class="n">matcher</span> <span class="o">=</span> <span class="n">pattern</span><span class="o">.</span><span class="na">matcher</span><span class="o">(</span><span class="n">text</span><span class="o">);</span>
+
+        <span class="nc">StringBuilder</span> <span class="n">filteredTextBuilder</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringBuilder</span><span class="o">();</span>
+        <span class="k">while</span> <span class="o">(</span><span class="n">matcher</span><span class="o">.</span><span class="na">find</span><span class="o">())</span> <span class="o">{</span>
+            <span class="n">filteredTextBuilder</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">matcher</span><span class="o">.</span><span class="na">group</span><span class="o">());</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">filteredTextBuilder</span><span class="o">.</span><span class="na">toString</span><span class="o">();</span>
+    <span class="o">}</span>
+</code></pre></div></div>
+
+<p>정규 표현식을 사용하여 한글 (<code class="language-plaintext highlighter-rouge">ㄱ-ㅎㅏ-ㅣ가-힣</code>), 영어 (<code class="language-plaintext highlighter-rouge">a-zA-Z</code>) 및 공백 (<code class="language-plaintext highlighter-rouge">\\s</code>)을 매칭합니다.</p>
+
+<p>입력된 텍스트에서 한글, 영어 및 공백만 남기고 나머지 문자는 제거합니다.</p>
+
+<h3 id="changestring-text">change(String text)</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="nc">String</span> <span class="nf">change</span><span class="o">(</span><span class="nc">String</span> <span class="n">text</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">for</span> <span class="o">(</span><span class="nc">String</span> <span class="n">banWord</span> <span class="o">:</span> <span class="k">this</span><span class="o">)</span> <span class="o">{</span>
+            <span class="nc">Pattern</span> <span class="n">pattern</span> <span class="o">=</span> <span class="nc">Pattern</span><span class="o">.</span><span class="na">compile</span><span class="o">(</span><span class="s">"(?i)"</span> <span class="o">+</span> <span class="nc">Pattern</span><span class="o">.</span><span class="na">quote</span><span class="o">(</span><span class="n">banWord</span><span class="o">));</span>
+            <span class="nc">Matcher</span> <span class="n">matcher</span> <span class="o">=</span> <span class="n">pattern</span><span class="o">.</span><span class="na">matcher</span><span class="o">(</span><span class="n">text</span><span class="o">);</span>
+
+            <span class="k">while</span> <span class="o">(</span><span class="n">matcher</span><span class="o">.</span><span class="na">find</span><span class="o">())</span> <span class="o">{</span>
+                <span class="kt">int</span> <span class="n">start</span> <span class="o">=</span> <span class="n">matcher</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
+                <span class="kt">int</span> <span class="n">end</span> <span class="o">=</span> <span class="n">matcher</span><span class="o">.</span><span class="na">end</span><span class="o">();</span>
+
+                <span class="nc">String</span> <span class="n">sub</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">substituteValue</span><span class="o">.</span><span class="na">repeat</span><span class="o">(</span><span class="n">end</span> <span class="o">-</span> <span class="n">start</span><span class="o">);</span>
+                <span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="na">substring</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="n">start</span><span class="o">)</span> <span class="o">+</span> <span class="n">sub</span> <span class="o">+</span> <span class="n">text</span><span class="o">.</span><span class="na">substring</span><span class="o">(</span><span class="n">end</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">text</span><span class="o">;</span>
+    <span class="o">}</span>
+</code></pre></div></div>
+
+<p>금칙어는 대소문자 구분 없이 찾기 위해 <code class="language-plaintext highlighter-rouge">(?i)</code> 플래그를 사용합니다.</p>
+
+<p>매칭된 금지어를 <code class="language-plaintext highlighter-rouge">substituteValue</code>로 대체합니다.</p>
+
+<h3 id="checkstring-text">check(String text)</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">check</span><span class="o">(</span><span class="nc">String</span> <span class="n">text</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="nf">stream</span><span class="o">().</span><span class="na">anyMatch</span><span class="o">(</span><span class="nl">text:</span><span class="o">:</span><span class="n">contains</span><span class="o">);</span>
+    <span class="o">}</span>
+
+</code></pre></div></div>
+
+<p>입력된 텍스트에 금칙어가 포함되어 있는지 확인합니다. 금칙어 포함되어 있으면 <code class="language-plaintext highlighter-rouge">true</code>를 반환합니다.</p>
+
+<h2 id="banwordinterceptor-class">BanWordInterceptor class</h2>
+
+<h3 id="prehandlehttpservletrequest-request-httpservletresponse-response-object-handler">preHandle(HttpServletRequest <em>request</em>, HttpServletResponse <em>response</em>, Object <em>handler</em>)</h3>
+
+<p><code class="language-plaintext highlighter-rouge">preChange</code> 메서드를 호출해서 불필요한 문자를 제거한 후, <code class="language-plaintext highlighter-rouge">check</code> 메서드로 내용에 금칙어가 포함되어 있는지 확인합니다.</p>
+
+<p>금칙어가 있다면 <code class="language-plaintext highlighter-rouge">change</code> 메서드를 호출하여 금칙어를 대체 문자열로 변환합니다.</p>
+
+<p>필터링된 내용을 요청에 <code class="language-plaintext highlighter-rouge">filteredContents</code>로 설정합니다.</p>
+
+		
+	</div>
+	
+		<!-- Start disqus -->
+<script src="/js/disqusLoader.js" /></script>
+<div id="disqus_thread"><h3>Discussion and feedback</h3></div>
+<div class="disqus"></div>
+<script>
+    disqusLoader('.disqus', {
+        scriptUrl: 'https://egglog.disqus.com/embed.js'
+    });
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<!-- End disqus -->
+	
+</article>
+
+
+
+	  </main>
+		
+		  <!-- Pagination links -->
+      
+
+	  </div>
+	    
+	    <!-- Footer -->
+	    <footer><span>@2024 - 에그로그</span></footer>
+
+
+	    <!-- Script -->
+      <script src="/js/main.js"></script>	
+
+
+	</div>
+</body>
+</html>
